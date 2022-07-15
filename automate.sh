@@ -5,6 +5,13 @@ ROOT_NAME=$1
 FB=$2
 LINKEDIN=$3 
 
+#validate
+if [ -z "$1" ]
+  then
+    echo "No argument supplied"
+    exit
+fi
+
 #compose directory
 ROOT_DIR="${ROOT_NAME} ${DATE_NOW}"
 rm -rf "${ROOT_DIR}"
@@ -31,15 +38,15 @@ cd ../..
 mkdir my_friends
 cd my_friends
 SOURCE_URL="https://gist.githubusercontent.com/tegarimansyah/e91f335753ab2c7fb12815779677e914/raw/94864388379fecee450fde26e3e73bfb2bcda194/list%2520of%2520my%2520friends.txt"
-curl -s "${SOURCE_URL}" >> list_of_my_friends.txt
+curl -s "${SOURCE_URL}" > list_of_my_friends.txt
 
 ##create my_system_info
 cd ..
 mkdir my_system_info
 cd my_system_info
 touch about_this_laptop.txt
-USERNAME=$(uname)
+USERNAME=$(whoami)
 SYSTEM_INFO=$(uname -a)
 echo "My username: ${USERNAME}" > about_this_laptop.txt
 echo "With host: ${SYSTEM_INFO}" >> about_this_laptop.txt
-ping google.com > internet_connection.txt
+ping -w 2 google.com > internet_connection.txt
