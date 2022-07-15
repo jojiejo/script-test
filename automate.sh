@@ -49,4 +49,4 @@ USERNAME=$(whoami)
 SYSTEM_INFO=$(uname -a)
 echo "My username: ${USERNAME}" > about_this_laptop.txt
 echo "With host: ${SYSTEM_INFO}" >> about_this_laptop.txt
-ping -w 2 google.com > internet_connection.txt
+ping -c 4 google.com > internet_connection.txt
